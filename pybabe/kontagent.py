@@ -130,8 +130,8 @@ def process_file(base_date, f, discard_names):
             continue
         if msgtype == "pgr":
             referer = referer.replace('\"', '')
-            if referer == '-':
-                referer = None
+            if referer == '-' or not referer:
+                referer = params.get('u', None)
             if referer:
                 srefs = referer.split('/')
                 if len(srefs) >= 3:
